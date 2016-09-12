@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+  <head>
+    <title>Reversi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/styles/style.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    {% block head %} {% endblock %}
+  </head>
+  <body>
+    <nav id="main-nav" role="navigation">
+      <ul id="main-nav">
+        <li>
+          <a href="/single">Singleplayer Game</a>
+        </li>
+        <li>
+          <a href="/multi">Multiplayer Game</a>
+        </li>
+        <li>
+          <a href="/rankings">View Leaderboard</a>
+        </li>
+        <li style="float:right">
+          <a href="{{ logout|safe }}">Sign Out</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="content">
+      {% block content %} {% endblock %}
+    </div>
+  </body>
+

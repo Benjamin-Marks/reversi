@@ -1,0 +1,100 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #999;
+}
+
+li {
+  display: inline;
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #FFFFFF;
+  padding: 15px 15px;
+  text-decoration: none;
+  text-align: center;
+}
+
+li a:hover {
+  background-color: #777;
+}
+
+.formadd h4 {
+  margin: 0 5px;
+  float: left;
+}
+
+.formadd select {
+  margin: 0 5px;
+  float: left;
+}
+
+#gameinfo {
+  float: left;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#gameinfo h3 {
+  margin: 10px 0;
+}
+
+table {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#lobby .joingame {
+  cursor: pointer;
+  text-align: center;
+}
+
+table, th, tr, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#makelobby {
+  text-decoration: none;
+  color: black;
+  float: left;
+  background-color: #DDDDDD;
+  margin: 30px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid #AAAAAA;
+  padding: 5px;
+  font-size: 14px;
+}
+
+#board {
+  float: left;
+  margin-bottom: 50px;
+  margin-left: 30px;
+  width: 75%;
+}
+
+#board .row {
+  float: left;
+  width: 100%;
+}
+
+#board .cell {
+  position: relative;
+  width: 4%;
+  height:0;
+  padding-bottom: 4%;
+  background-color: green;
+  float: left;
+  border: 2px solid black;
+}
+
+#board .cell img {
+  width: 100%;
+}

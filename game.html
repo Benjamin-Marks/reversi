@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block head %}
+<script src="/js/game.js"></script>
+<script src="/_ah/channel/jsapi"></script>
+{% endblock %}
+
+
+{% block content %}
+{% if playing  %}
+  <script type="text/javascript">
+    $(document).ready(function() {
+    {% if singleplayer %}
+      startSingle({{gameID|safe}}, "{{playerID|safe}}", "{{data|safe}}");
+    {% else %}
+        start({{gameID|safe}}, "{{playerID|safe}}");
+        getChannel("{{token}}");
+    {% endif %}
+    });
+  </script>
+{% endif %}
+<div id = game>
+  {% if not multi_error %}
+    {% if not playing %}
+      {% if singleplayer %}
+      <h2>Start A Singleplayer Game</h2>
+      {% else %}
+      <h2>Start A Multiplayer Game</h2>
+      {% endif %}
+      <form method="post">
+        {% if singleplayer %}
+          <div class="formadd">
+            <h4>Opponent:</h4>
+            <select name="ai">
+              <option value="Novice AI">Novice AI</option>
+              <option value="Weak AI">Weak AI</option>
+              <option value="Moderate AI">Moderate AI</option>
+              <option value="Strong AI">Strong AI</option>
+            </select>
+          </div>
+        {% endif %}
+        <div class="formadd">
+          <h4>Board Size:</h4>
+          <select name="size">
+            {% for i in range(4, 15, 2) %}
+              <option {% if i == 8 %}selected="selected"{% endif %} value={{i}}>{{i}}x{{i}}</option>
+            {% endfor %}
+          </select>
+        </div>
+          <button id="start" type="submit">Start Game</button>
+        </form>
+    {% elif playing %}
+        <h1 id="playvs">Playing vs {{opponent}}</h1>
+      <div id="gameinfo">
+        <h3 id="whitescore">White Score: N/A</h3>
+        <h3 id="blackscore">Black Score: N/A</h3>
+        <h3 id="ourmove">Your Move: N/A</h3>
+        <h3 id="theirmove">Opponent Move: N/A</h3>
+        <h4 id="gamenotice">Waiting For Opponent</h4>
+        <button id="resign" onclick="resign()">Resign</button>
+      </div>
+      </div>
+      <div id="board">
+      {% for r in range(size) %}
+        <div class="row" id="row{{r}}">
+        {% for c in range(size) %}
+        <div class="cell" id="r{{r}}c{{c}}" onclick="move({{r}}, {{c}})"></div>
+        {% endfor %}
+        </div>
+      {% endfor %}
+      </div>
+    {% endif %}
+  {% else %}
+  <h1>{{error_message}}</h1>
+  {% endif %}
+</div>
+{% endblock %}

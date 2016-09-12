@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+<script src="/js/game.js"></script>
+{% endblock %}
+
+
+{% block content %}
+<div>
+  <h1>Multiplayer Lobby</h1>
+  {% if no_lobbies %}
+    <h2>No Players Waiting For Games<h2>
+  {% else %}
+    <table id="lobby">
+      <tr>
+        <th>Player</th>
+        <th>Elo</th>
+        <th>Join Game!</th>
+      </tr>
+      {% for lobby in lobbies %}
+      <tr>
+        <td>{{lobby[0]}}</td>
+        <td>{{lobby[1]}}</td>
+        <td class="joingame" onclick="joingame({{lobby[2]}})">Join!</td>
+      </tr>
+      {% endfor %}
+    </table>
+  {% endif %}
+  <a id="makelobby" href="multigame?makelobby=1" >Make a Lobby</a>
+</div>
+
+{% endblock %}

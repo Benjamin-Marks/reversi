@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<!--TODO: formatting, pages of results, and such-->
+<table>
+  <tr>
+    <th>Ranking</th>
+    <th>User</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Draws</th>
+  </tr>
+  {% for n in range(players|length) %}
+  <tr class="{{ loop.cycle('', 'fill') }}"> 
+    <td>{{n+1}} - {{players[n].elo}}</td>
+    <td>{{players[n].id}}</td>
+    <td>{{players[n].wins}}</td>
+    <td>{{players[n].losses}}</td>
+    <td>{{players[n].draws}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% endblock %}
