@@ -1,11 +1,7 @@
-application: testapp
+application: reversi-1
 runtime: python27
 api_version: 1
 threadsafe: true
-manual_scaling:
-    instances: 3
-
-
 
 libraries:
 - name: webapp2
